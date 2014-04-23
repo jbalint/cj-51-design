@@ -1,0 +1,90 @@
+# baseURI: http://jbalint/cj51design
+
+@prefix : <http://jbalint/cj51design#> .
+@prefix odol: <http://www.massey.ac.nz/iist/cs/pattern/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://jbalint/cj51design>
+  rdf:type owl:Ontology ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:Class
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf owl:Class ;
+.
+:Connection
+  rdf:type :DriverInterface ;
+  rdfs:subClassOf <http://jbalint/cj51design#jdbc.Connection> ;
+.
+:ConnectionImpl
+  rdf:type :DriverClass ;
+  rdfs:subClassOf :ConnectionPropertiesImpl ;
+  rdfs:subClassOf :MySQLConnection ;
+.
+:ConnectionProperties
+  rdf:type :DriverInterface ;
+.
+:ConnectionPropertiesImpl
+  rdf:type :DriverClass ;
+  rdfs:subClassOf :ConnectionProperties ;
+.
+:DriverClass
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Class ;
+.
+:DriverInterface
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Interface ;
+.
+:FabricMySQLConnection
+  rdf:type :DriverInterface ;
+  rdfs:subClassOf :MySQLConnection ;
+.
+:FabricMySQLConnectionProperties
+  rdf:type :DriverInterface ;
+  rdfs:subClassOf :ConnectionProperties ;
+.
+:FabricMySQLConnectionProxy
+  rdf:type :DriverClass ;
+  rdfs:subClassOf :FabricMySQLConnection ;
+  rdfs:subClassOf :FabricMySQLConnectionProperties ;
+.
+:FailoverConnectionProxy
+  rdf:type :DriverClass ;
+  rdfs:subClassOf :LoadBalancingConnectionProxy ;
+.
+:Interface
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf owl:Class ;
+.
+:JdbcInterface
+  rdf:type rdfs:Class ;
+  rdfs:subClassOf :Interface ;
+.
+:LoadBalancedConnection
+  rdf:type :DriverInterface ;
+  rdfs:subClassOf :MySQLConnection ;
+.
+:LoadBalancedMySQLConnection
+  rdf:type :DriverClass ;
+  rdfs:subClassOf :LoadBalancedConnection ;
+.
+:LoadBalancingConnectionProxy
+  rdf:type :DriverClass ;
+.
+:MySQLConnection
+  rdf:type :DriverInterface ;
+  rdfs:subClassOf :Connection ;
+.
+:PingTarget
+  rdf:type :DriverInterface ;
+.
+:ReplicationConnection
+  rdf:type :DriverClass ;
+.
+<http://jbalint/cj51design#jdbc.Connection>
+  rdf:type :JdbcInterface ;
+.
